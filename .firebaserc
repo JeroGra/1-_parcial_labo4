@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "parcial-laboiv": {
+      "hosting": {
+        "primer_parcial_labo4": [
+          "parcial-laboiv"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "parcial-laboiv"
+  }
+}

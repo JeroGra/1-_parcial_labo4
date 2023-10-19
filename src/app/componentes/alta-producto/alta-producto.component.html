@@ -1,0 +1,129 @@
+<body class="bg-light">
+    
+    <div class="container">
+      <main>
+        <div class="py-5 text-center">
+          <h2>Alta Producto</h2>
+        </div>
+        <div class="row g-5">
+          <div class="col-md-5 col-lg-4 order-md-last">
+           
+          </div>
+          <div class="col-md-7 col-lg-8">
+            <h3>{{mensaje}}</h3>
+            <h4 class="mb-3">Ingrese datos</h4>
+            <form [formGroup]="forms" class="needs-validation" >
+              <div class="row g-3">
+                <div class="col-sm-6">
+                    <div *ngIf="forms.controls['codigo'].errors != null" >
+                        <small 
+                            *ngIf="forms.controls['codigo'].errors!['required'] && forms.controls['codigo'].touched"
+                            style="color: red;"
+                            >
+                            Dato Obligatorio
+                         </small>
+                      </div>
+                  <label for="firstName" class="form-label">Codigo Producto</label>
+                  <input  formControlName="codigo" type="text" class="form-control" id="firstName" placeholder=""  [(ngModel)]="codigo" >
+                  <div class="invalid-feedback">
+
+                  </div>
+                </div>
+    
+                <div class="col-sm-6">
+                    <div *ngIf="forms.controls['descripcion'].errors != null" >
+                        <small 
+                            *ngIf="forms.controls['descripcion'].errors!['required'] && forms.controls['descripcion'].touched"
+                            style="color: red;"
+                            >
+                            Dato Obligatorio
+                         </small>
+                      </div>
+                  <label for="lastName" class="form-label">Descripcion</label>
+                  <input formControlName="descripcion" type="text" class="form-control" id="lastName" placeholder=""  [(ngModel)]="descripcion">
+                  <div class="invalid-feedback">
+
+                  </div>
+                </div>
+    
+                <div class="col-12">
+                    <div *ngIf="forms.controls['precio'].errors != null" >
+                        <small 
+                            *ngIf="forms.controls['precio'].errors!['required'] && forms.controls['precio'].touched"
+                            style="color: red;"
+                            >
+                            Dato Obligatorio
+                         </small>
+                      </div>
+                  <label for="username" class="form-label">Precio</label>
+                    <input formControlName="precio" [(ngModel)]="precio" type="number" class="form-control" id="username" placeholder="" >
+
+                    </div>
+                  </div>
+    
+                <div class="col-12">
+                    <div *ngIf="forms.controls['stock'].errors != null" >
+                        <small 
+                            *ngIf="forms.controls['stock'].errors!['required'] && forms.controls['stock'].touched"
+                            style="color: red;"
+                            >
+                            Dato Obligatorio
+                         </small>
+                      </div>
+                  <label for="email" class="form-label">Stock</label>
+                  <input formControlName="stock" type="number" class="form-control"  [(ngModel)]="stock" id="email" placeholder="">
+                  <div class="invalid-feedback">
+
+                  </div>
+                </div>
+    
+
+    
+                <div class="col-md-5">
+                    <div *ngIf="forms.controls['pais'].errors != null" >
+                        <small 
+                            *ngIf="forms.controls['pais'].errors!['required'] && forms.controls['pais'].touched"
+                            style="color: red;"
+                            >
+                            Dato Obligatorio
+                         </small>
+                      </div>
+                  <label for="country" class="form-label">Pais Origen</label>
+                  <select formControlName="pais" class="form-select" id="country" >
+                    <option  value="pais">Choose...</option>
+                    <option >{{arrayPaises[0].name.common}}</option>
+                    <option  >{{arrayPaises[1].name.common}}</option>
+                    <option   >{{arrayPaises[2].name.common}}</option>
+                  </select>
+                </div>
+
+                <app-tabla-paises [paises]="arrayPaises"> </app-tabla-paises>
+    
+              <hr class="my-4">
+    
+              <h4 class="mb-3">Comestible</h4>
+    
+              <div class="my-3">
+                <div class="form-check">
+                  <input id="credit" name="paymentMethod" type="radio" class="form-check-input" (click)="Comestible((true))">
+                  <label class="form-check-label" for="credit">Si</label>
+                </div>
+                <div class="form-check">
+                  <input id="debit" name="paymentMethod" type="radio" class="form-check-input" checked (click)="Comestible((false))">
+                  <label class="form-check-label" for="debit">No</label>
+                </div>
+              <hr class="my-4">
+             </div>
+              <button  [disabled]="forms.invalid" (click)="Agregar()" class="w-100 btn btn-primary btn-lg" type="submit">Agregar Producto</button>
+            </form>
+          </div>
+        </div>
+      </main>
+    
+    </div>
+    
+    
+        <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    
+          <script src="form-validation.js"></script>
+      </body>

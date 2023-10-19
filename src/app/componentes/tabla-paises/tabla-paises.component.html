@@ -1,0 +1,19 @@
+<table>
+
+    <tr>
+        <th>Nombre</th>
+        <th>Capital</th>
+        <th>Continente</th>
+        <th>Bandera</th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    <tr *ngFor="let pais  of paises">
+        <td>{{pais.name.common}}</td>
+        <td>{{pais.capital}}</td>
+         <td>{{pais.continents}}</td>
+        <td><img width="100px" height="100px" src="{{pais.flags.png}}"></td>
+    </tr>
+
+</table>

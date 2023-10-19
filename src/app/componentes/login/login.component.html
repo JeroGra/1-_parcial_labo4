@@ -1,0 +1,68 @@
+<div id="div_principal">
+    <main class="form-signin w-100 m-auto">
+    <form  [formGroup]="forms">
+    <h1 class="h3 mb-3 fw-normal">Ingresar</h1>
+    <div class="form-floating">
+        <h1>{{mensaje}}</h1>
+        <div *ngIf="forms.controls['email'].errors != null"  >
+          <small 
+              *ngIf="forms.controls['email'].errors!['required'] && forms.controls['email'].touched"
+              style="color: red;"
+              >
+              Dato Obligatorio
+         </small>
+       </div>
+      <input formControlName="email" name="email" type="email" class="form-control" id="floatingInput" [(ngModel)]="email" placeholder="name@example.com">
+      <label for="floatingInput">Email address</label>
+      <div  *ngIf="forms.controls['email'].errors != null" >
+        <small 
+           *ngIf="!forms.controls['email'].errors!['maxLength'] && forms.controls['email'].touched"
+           style="color: red;"
+           >
+           
+           Coloque maximo 15 caracteres
+        </small>
+      </div>
+      <div  *ngIf="forms.controls['email'].errors != null" >
+        <small 
+           *ngIf="!forms.controls['email'].errors!['email'] && forms.controls['email'].touched"
+           style="color: red;"
+           >
+           
+           Coloque un email valido
+        </small>
+      </div>    
+
+    </div>
+
+    <div class="form-floating">
+        <div *ngIf="forms.controls['pass'].errors != null" >
+            <small 
+                *ngIf="forms.controls['pass'].errors!['required'] && forms.controls['pass'].touched"
+                style="color: red;"
+                >
+                Dato Obligatorio
+             </small>
+          </div>
+      <input  formControlName="pass" name="pass" type="password" class="form-control" id="floatingPassword" [(ngModel)]="pass" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+      <div  *ngIf="forms.controls['pass'].errors != null" >
+        <small 
+           *ngIf="!forms.controls['pass'].errors!['minLength'] && forms.controls['pass'].touched"
+           style="color: red;"
+           >
+           
+           Coloque minimo {{minL}} caracteres
+        </small>
+      </div>  
+    </div>
+  
+    <button class="btn btn-primary w-100 py-2" (click)="inicioSesion()" >Sign in</button>
+    <p style="text-align: center;margin: 0%;">Podes ingresar con usuarios de prueba</p> 
+    <button (click)="IngresoAdmin()"  class=" btn_iz btn_avatar btn" ><img class="avatar_img" >Admin</button>
+    <button (click)="IngresoEmpleado()" class="btn_avatar btn" ><img class="avatar_img" >Empleado</button>
+    </form>
+  </main>
+  
+  
+  </div>  
