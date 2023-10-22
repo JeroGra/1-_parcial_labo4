@@ -10,7 +10,7 @@
            
           </div>
           <div class="col-md-7 col-lg-8">
-            <h3>{{mensaje}}</h3>
+
             <h4 class="mb-3">Ingrese datos</h4>
             <form [formGroup]="forms" class="needs-validation" >
               <div class="row g-3">
@@ -49,10 +49,10 @@
                 <div class="col-12">
                     <div *ngIf="forms.controls['precio'].errors != null" >
                         <small 
-                            *ngIf="forms.controls['precio'].errors!['required'] && forms.controls['precio'].touched"
+                            *ngIf="forms.controls['precio'].errors!['min'] && forms.controls['precio'].touched"
                             style="color: red;"
                             >
-                            Dato Obligatorio
+                            Dato Obligatorio, valor minimo 1
                          </small>
                       </div>
                   <label for="username" class="form-label">Precio</label>
@@ -64,10 +64,10 @@
                 <div class="col-12">
                     <div *ngIf="forms.controls['stock'].errors != null" >
                         <small 
-                            *ngIf="forms.controls['stock'].errors!['required'] && forms.controls['stock'].touched"
+                            *ngIf="forms.controls['stock'].errors!['min'] && forms.controls['stock'].touched"
                             style="color: red;"
                             >
-                            Dato Obligatorio
+                            Dato Obligatorio, valor minimo 1
                          </small>
                       </div>
                   <label for="email" class="form-label">Stock</label>
@@ -87,17 +87,17 @@
                             >
                             Dato Obligatorio
                          </small>
-                      </div>
+                        </div>
+                        <small 
+                        *ngIf="paiseInvalido"
+                        style="color: red;"
+                        >
+                        Pais invalido
+                     </small>
                   <label for="country" class="form-label">Pais Origen</label>
-                  <select formControlName="pais" class="form-select" id="country" >
-                    <option  value="pais">Choose...</option>
-                    <option >{{arrayPaises[0].name.common}}</option>
-                    <option  >{{arrayPaises[1].name.common}}</option>
-                    <option   >{{arrayPaises[2].name.common}}</option>
-                  </select>
                 </div>
-
-                <app-tabla-paises [paises]="arrayPaises"> </app-tabla-paises>
+                <input  formControlName="pais" name="pais" [(ngModel)]="pais" type="text">
+                <app-tabla-paises [paises]="arrayPaises" (PaisSeleccionadoevent)="ObtenerPaisSelecionada($event)"> </app-tabla-paises>
     
               <hr class="my-4">
     
@@ -114,6 +114,7 @@
                 </div>
               <hr class="my-4">
              </div>
+             <h3 style="color: rgb(44, 44, 132);">{{mensaje}}</h3>
               <button  [disabled]="forms.invalid" (click)="Agregar()" class="w-100 btn btn-primary btn-lg" type="submit">Agregar Producto</button>
             </form>
           </div>

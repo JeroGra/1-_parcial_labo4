@@ -3,7 +3,7 @@
     <form  [formGroup]="forms">
     <h1 class="h3 mb-3 fw-normal">Ingresar</h1>
     <div class="form-floating">
-        <h1>{{mensaje}}</h1>
+        <h1 style="color: rgb(44, 44, 132);">{{mensaje}}</h1>
         <div *ngIf="forms.controls['email'].errors != null"  >
           <small 
               *ngIf="forms.controls['email'].errors!['required'] && forms.controls['email'].touched"

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { BaseDatosService } from 'src/app/servicios/base-datos.service';
 
 @Component({
@@ -9,7 +10,6 @@ import { BaseDatosService } from 'src/app/servicios/base-datos.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
 
   public forms : FormGroup
 
@@ -25,7 +25,8 @@ export class LoginComponent {
   minL = 5;
 
   constructor(private fb : FormBuilder,
-    private bd : BaseDatosService){
+    private bd : BaseDatosService,
+    private route:Router){
 
       this.forms = this.fb.group({
         email : ['',[
@@ -42,7 +43,6 @@ export class LoginComponent {
       this.bd.TraerUsers();
       console.log(this.bd.usuarios)
     }
-
 
 
   inicioSesion()
@@ -67,6 +67,11 @@ export class LoginComponent {
 
         this.mensaje = "Bienvenido/a! "+this.user.nombre + " " + this.user.rol
         this.bd.logIn(this.user);
+        setTimeout(()=>{
+          this.mensaje = "";
+          this.route.navigateByUrl('home');
+        },2000)
+        
       }
       else
       {

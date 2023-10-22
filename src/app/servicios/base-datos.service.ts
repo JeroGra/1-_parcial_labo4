@@ -89,6 +89,7 @@ export class BaseDatosService {
 
   logOut()
   {
+    this.userLog = null;
     this.logeado = false;
   }
 

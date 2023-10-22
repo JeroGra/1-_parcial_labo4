@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { AlertModule } from '@coreui/angular';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
@@ -12,7 +12,6 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './componentes/login/login.component';
 import { AltaProductoComponent } from './componentes/alta-producto/alta-producto.component';
 import { TablaPaisesComponent } from './componentes/tabla-paises/tabla-paises.component';
-
 @NgModule({
   declarations: [
     AppComponent,
