@@ -1,0 +1,24 @@
+<table id="Mitablas">
+
+    <tr>
+        <th>Codigo</th>
+        <th>Descripcion</th>
+        <th>Precio</th>
+        <th>Stock</th>
+        <th>Comestible</th>
+        <th>Pais</th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    <tr *ngFor="let prod  of productos">
+        <td>{{prod.codigo}}</td>
+        <td>{{prod.descripcion}}</td>
+        <td>{{prod.precio}}</td>
+         <td>{{prod.stock}}</td>
+         <td>{{prod.comestible}}</td>
+        <td><img width="100px" height="100px" src="{{prod.pais.flags.png}}"></td>
+        <td><button style="background-color: rgb(250, 138, 90);" class="btn btn-primary btn-lg" *ngIf="public"  name="pais" (click)="select(prod)">Selecionar</button></td>
+    </tr>
+
+</table>

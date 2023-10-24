@@ -1,0 +1,41 @@
+<main>
+    <div class="container py-4">
+      <header class="pb-3 mb-4 border-bottom">
+          <span class="fs-4">Detalle Producto</span>
+      </header>
+  
+      <div class="p-5 mb-4 bg-light rounded-3">
+        <h2>Productos</h2>
+        <div class="container-fluid py-5" style="overflow: scroll;">
+            <app-tabla-producto [public]="true" [productos]="arrProductos"  (ProductoSeleccionadoevent)="ObtenerProductoSelecionada($event)" ></app-tabla-producto>
+        </div>
+      </div>
+  
+      <div class="row align-items-md-stretch">
+        <div class="col-md-6">
+          <div  class="h-100 p-5 text-white bg-dark rounded-3">
+            <h2>Detalle del Producto</h2>
+            <div *ngIf="pSelec">
+                <p>Codigo: {{productoSelec.codigo}}</p>
+                <p>Descripcion: '{{productoSelec.descripcion}}'</p>
+                <p>Precio: ${{productoSelec.precio}}</p>
+                <p>Stock: {{productoSelec.stock}} unidades</p>
+                <p>Pais Origen: {{paisProd.name.common}}</p>
+                <p>{{comestible}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="h-100 p-5 bg-light border rounded-3">
+            <h2>Detalle del Pais de origen</h2>
+            <div *ngIf="pSelec">
+                <p>Pais: {{paisProd.name.common}}</p>
+                <p>Capital: {{paisProd.capital}}</p>
+                <p>Continente: {{paisProd.continents}}</p>
+                <img src="{{paisProd.flags.png}}" alt="bandera">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>

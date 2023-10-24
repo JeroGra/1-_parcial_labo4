@@ -107,15 +107,15 @@ export class AltaProductoComponent {
         this.descripcion = ""
         this.precio = 0
         this.stock = 0
-        this.ruta.navigateByUrl('home');
+        this.ruta.navigateByUrl('productoDetalle');
 
-      },1500)
+      },1000)
     }
     else
     {
       this.paiseInvalido = true;
       this.mensaje = "Erro! Verfique los campos"
-      setTimeout(()=>{this.mensaje = ""},1500)
+      setTimeout(()=>{this.mensaje = ""},1000)
     }
     
   }

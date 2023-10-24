@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { BaseDatosService } from 'src/app/servicios/base-datos.service';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-login',
@@ -70,7 +71,7 @@ export class LoginComponent {
         setTimeout(()=>{
           this.mensaje = "";
           this.route.navigateByUrl('home');
-        },2000)
+        },1000)
         
       }
       else
@@ -78,7 +79,7 @@ export class LoginComponent {
         this.mensaje = "Error, usuario invalido"
         setTimeout(() => {
           this.mensaje = ""
-        }, 2000);
+        }, 1000);
       }
 
   }

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Firestore, updateDoc, } from '@angular/fire/firestore';
 import { getDocs,setDoc,doc,addDoc,collection,deleteDoc } from 'firebase/firestore';
+import { collectionData } from 'rxfire/firestore';
 
 
 
@@ -13,6 +14,7 @@ export class BaseDatosService {
   public logeado = false;
   userLog: any | null = null
   usuarios:Array<any> = []
+  productos:Array<any> = []
 
   constructor(private firestore:Firestore) { }
 
@@ -58,6 +60,13 @@ export class BaseDatosService {
     });
   
     this.usuarios = JSON.parse(JSON.stringify(this.usuarios)) as Array<any>
+  }
+
+   TraerProductos()
+  {
+    this.usuarios = []
+    const coleccion = collection(this.firestore,'productos')
+    return collectionData(coleccion);
   }
 
   Actualizar(id:string)

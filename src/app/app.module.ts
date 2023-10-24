@@ -12,13 +12,19 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './componentes/login/login.component';
 import { AltaProductoComponent } from './componentes/alta-producto/alta-producto.component';
 import { TablaPaisesComponent } from './componentes/tabla-paises/tabla-paises.component';
+import { ProductoDetalleComponent } from './componentes/producto-detalle/producto-detalle.component';
+import { ProductoListadoPublicoComponent } from './componentes/producto-listado-publico/producto-listado-publico.component';
+import { TablaProductoComponent } from './componentes/tabla-producto/tabla-producto.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
     AltaProductoComponent,
-    TablaPaisesComponent
+    TablaPaisesComponent,
+    ProductoDetalleComponent,
+    ProductoListadoPublicoComponent,
+    TablaProductoComponent
   ],
   imports: [
     BrowserModule,
