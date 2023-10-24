@@ -1,0 +1,20 @@
+<table id="Mitablas">
+
+    <tr>
+        <th>Codigo</th>
+        <th>Empresa</th>
+        <th>Capacidad</th>
+        <th>Color</th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    <tr *ngFor="let container  of containers">
+        <td>{{container.codigo}}</td>
+        <td>{{container.empresa}}</td>
+        <td>{{container.capacidad}}</td>
+        <td><input type="color" name="color" value="{{container.color}}" disabled="true"></td>
+        <td><button style="background-color: rgb(254, 173, 67);" class="w-100 btn btn-lg btn-outline-primary" name="pais" (click)="select(container)">Selecionar</button></td>
+    </tr>
+
+</table>

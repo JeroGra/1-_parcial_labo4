@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Firestore, updateDoc, } from '@angular/fire/firestore';
 import { getDocs,setDoc,doc,addDoc,collection,deleteDoc } from 'firebase/firestore';
 import { collectionData } from 'rxfire/firestore';
+import { Contenedor } from '../clases/contenedor';
 
 
 
@@ -12,29 +13,39 @@ export class BaseDatosService {
 
 
   public logeado = false;
-  userLog: any | null = null
+  public userLog: any | null = null
   usuarios:Array<any> = []
   productos:Array<any> = []
 
   constructor(private firestore:Firestore) { }
 
 
-  Alta(pelicula:any)
+  /*Alta(pelicula:any)
   {
     const coleccion = collection(this.firestore,'x')
     addDoc(coleccion,pelicula.toFirestore());
     //this.TraerPeliculas()
-  }
+  }*/
 
   
   AltaProducto(producto:any)
   {
     const coleccion = collection(this.firestore,'productos')
-    addDoc(coleccion,producto);
+    addDoc(coleccion,JSON.parse(JSON.stringify(producto)));
     //this.TraerPeliculas()
   }
+
+  AltaContainer(contenedor:Contenedor)
+  {
+    const coleccion = collection(this.firestore,'contenedores')
+    const documento = doc(coleccion);
+    const id = documento.id;
+    contenedor.id = id;
+    let obj = JSON.parse(JSON.stringify(contenedor));
+    setDoc(documento,obj);
+  }
   
-  async Traer()
+ /* async Traer()
   {
     //this.peliculas = []
     const coleccion = collection(this.firestore,'x')
@@ -46,7 +57,7 @@ export class BaseDatosService {
     });
   
    // this.peliculas = JSON.parse(JSON.stringify(this.peliculas)) as Array<Pelicula>
-  }
+  }*/
 
   async TraerUsers()
   {
@@ -69,18 +80,42 @@ export class BaseDatosService {
     return collectionData(coleccion);
   }
 
-  Actualizar(id:string)
+  TraerContainers()
+  {
+    this.usuarios = []
+    const coleccion = collection(this.firestore,'contenedores')
+    return collectionData(coleccion);
+  }
+
+
+  /*Actualizar(id:string)
   {
     const coleccion = collection(this.firestore,'x')
     const documento = doc(coleccion,id);
     updateDoc(documento,{
 
     })
+  }*/
+
+  ActualizarContainer(id:string,container:Contenedor)
+  {
+    const coleccion = collection(this.firestore,'contenedores')
+    const documento = doc(coleccion,id);
+    let obj = JSON.parse(JSON.stringify(container));
+    updateDoc(documento,obj);
   }
 
-  Eliminar(id:any)
+  /*Eliminar(id:any)
   {
     const coleccion = collection(this.firestore,'x')
+    const documento = doc(coleccion,id);
+    deleteDoc(documento);
+  }*/
+
+  
+  EliminarContainer(id:string)
+  {
+    const coleccion = collection(this.firestore,'contenedores')
     const documento = doc(coleccion,id);
     deleteDoc(documento);
   }

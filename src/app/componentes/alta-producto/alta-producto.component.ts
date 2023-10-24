@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Producto } from 'src/app/clases/producto';
 import { ApisService } from 'src/app/servicios/apis.service';
 import { BaseDatosService } from 'src/app/servicios/base-datos.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-alta-producto',
   templateUrl: './alta-producto.component.html',
@@ -88,17 +89,27 @@ export class AltaProductoComponent {
   {
     if(this.PaisValidator())
     {
-      let prod = {
-        pais:this.paisSelec,
-        codigo:this.codigo,
-        descripcion:this.descripcion,
-        precio: this.precio, 
-        stock: this.stock,
-        comestible:this.comestible
-      }
+
+
+      let producto = new Producto
+      producto.codigo = this.codigo
+      producto.descripcion = this.descripcion,
+      producto.precio = this.precio, 
+      producto.stock = this.stock,
+      producto.comestible = this.comestible
+      producto.pais = this.paisSelec,
   
-      this.bd.AltaProducto(prod)
+      this.bd.AltaProducto(producto)
       this.mensaje = "Producto dado de Alta"
+
+      Swal.fire({
+        text: 'Producto dado de Alta',
+        showConfirmButton: false,
+        timer: 1000,
+        toast: true,
+        position: 'top-right',
+        icon:'success',
+      })
 
       setTimeout(()=>{
         this.mensaje = "";

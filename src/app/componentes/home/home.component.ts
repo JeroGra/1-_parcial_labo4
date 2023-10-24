@@ -15,7 +15,7 @@ perfName = "";
 perfImg = "";
 perfUrl = "";
 logeado = "";
-
+isLog = false;
 constructor(private api : ApisService, public log : BaseDatosService)
 {
   this.github = this.api.TraerGitHub().subscribe((perf:any)=>{
@@ -27,9 +27,17 @@ constructor(private api : ApisService, public log : BaseDatosService)
     if(this.log.userLog != null)
     {
         this.logeado = this.log.userLog.nombre + ", " + "rol: '"+ this.log.userLog.rol+"'"; 
+        this.isLog = true;
     } 
 
   });
+}
+
+logOut()
+{
+  this.logeado = "";
+  this.isLog = false;
+  this.log.logOut();
 }
 
 

@@ -1,0 +1,43 @@
+<form [formGroup]="forms">
+    <div *ngIf="forms.controls['codigo'].errors != null" >
+        <small 
+            *ngIf="forms.controls['codigo'].errors!['required'] && forms.controls['codigo'].touched"
+            style="color: red;"
+            >
+            *Dato Obligatorio 
+         </small>
+      </div>
+      <div *ngIf="forms.controls['codigo'].errors != null" >
+        <small 
+            *ngIf="!forms.controls['codigo'].errors!['minLength'] && forms.controls['codigo'].touched"
+            style="color: red;"
+            >
+            *Mnimo 5 caracteres
+         </small>
+      </div>
+    <input  formControlName="codigo" name="codigo"  class="form-control" type="text" placeholder="codigo"  [(ngModel)]="codigo"  >
+
+    <div *ngIf="forms.controls['empresa'].errors != null" >
+        <small 
+            *ngIf="forms.controls['empresa'].errors!['required'] && forms.controls['empresa'].touched"
+            style="color: red;"
+            >
+            *Dato Obligatorio
+         </small>
+      </div>
+    <input  formControlName="empresa" name="empresa" class="form-control" type="text"  placeholder="empresa"  [(ngModel)]="empresa" >
+
+    <div *ngIf="forms.controls['capacidad'].errors != null" >
+        <small 
+            *ngIf="forms.controls['capacidad'].errors!['min'] && forms.controls['capacidad'].touched"
+            style="color: red;"
+            >
+            *Capacidad minima de 25.000
+         </small>
+      </div>
+    <input  formControlName="capacidad" name="capacidad" class="form-control" type="number" placeholder="capacidad"  [(ngModel)]="capacidad" >
+
+    <input  formControlName="color" name="color" style="height: 50px;" class="form-control" type="color" placeholder="color"  [(ngModel)]="color" >
+
+    <button  [disabled]="forms.invalid" type="button" class="w-100 btn btn-lg btn-outline-primary" (click)="Alta()">Cargar Container</button>
+</form>

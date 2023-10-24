@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Producto } from 'src/app/clases/producto';
 import { BaseDatosService } from 'src/app/servicios/base-datos.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { BaseDatosService } from 'src/app/servicios/base-datos.service';
 })
 export class ProductoDetalleComponent {
   arrProductos : Array<any> = []
-  productoSelec:any;
+  productoSelec:Producto = new Producto;
   paisProd:any;
   pSelec = false;
   comestible = "Es comestible";

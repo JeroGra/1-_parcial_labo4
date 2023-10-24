@@ -6,7 +6,7 @@
   
       <div class="p-5 mb-4 bg-light rounded-3">
         <h2>Productos</h2>
-        <div class="container-fluid py-5" style="overflow: scroll;">
+        <div class="container-fluid py-5" style="overflow: scroll; height: 400px;">
             <app-tabla-producto [public]="true" [productos]="arrProductos"  (ProductoSeleccionadoevent)="ObtenerProductoSelecionada($event)" ></app-tabla-producto>
         </div>
       </div>

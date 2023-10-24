@@ -3,10 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './componentes/home/home.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { AltaProductoComponent } from './componentes/alta-producto/alta-producto.component';
-import { activateGuard } from './guard/activate.guard';
+import { activateGuard, activateGuardRol } from './guard/activate.guard';
 import { deactivateGuard } from './guard/deactivate.guard';
 import { ProductoDetalleComponent } from './componentes/producto-detalle/producto-detalle.component';
 import { ProductoListadoPublicoComponent } from './componentes/producto-listado-publico/producto-listado-publico.component';
+import { AbmContainerComponent } from './componentes/abm-container/abm-container.component';
 
 const routes: Routes = [
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path:'productos',component:ProductoListadoPublicoComponent},
   {path:'altaProducto',component:AltaProductoComponent,canActivate: [activateGuard],},
   {path:'productoDetalle',component:ProductoDetalleComponent,canActivate: [activateGuard],},
+  {path:'abmContainer',component:AbmContainerComponent,canActivate: [activateGuardRol],},
   { path: '**', redirectTo: 'home'},
 
 ];

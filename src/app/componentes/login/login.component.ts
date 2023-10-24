@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { Usuario } from 'src/app/clases/usuario';
 import { BaseDatosService } from 'src/app/servicios/base-datos.service';
 import Swal from 'sweetalert2'
 
@@ -17,7 +18,7 @@ export class LoginComponent {
   email:string = "";
   pass:string  = "";
 
-  user:any
+  user:Usuario = new Usuario
 
   mensaje = "";
   
@@ -68,6 +69,14 @@ export class LoginComponent {
 
         this.mensaje = "Bienvenido/a! "+this.user.nombre + " " + this.user.rol
         this.bd.logIn(this.user);
+        Swal.fire({
+          text: "Bienvenido/a! "+this.user.nombre + " " + this.user.rol,
+          showConfirmButton: false,
+          timer: 1000,
+          toast: true,
+          position: 'top-right',
+          icon:'success',
+        })
         setTimeout(()=>{
           this.mensaje = "";
           this.route.navigateByUrl('home');
