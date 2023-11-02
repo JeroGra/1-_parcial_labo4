@@ -23,7 +23,7 @@ export const activateGuard: CanActivateFn = (route, state) => {
 export const activateGuardRol: CanActivateFn = (route, state) => {
   let userRol =  inject(BaseDatosService).userLog.rol
 
-  if(!inject(BaseDatosService).logeado)
+  if(inject(BaseDatosService).logeado)
   {
     Swal.fire({
       text: "No tienes los permisos para acceder",
@@ -36,4 +36,20 @@ export const activateGuardRol: CanActivateFn = (route, state) => {
   }
 
   return inject(BaseDatosService).logeado && userRol === "admin";
+};
+
+export const activateGuardLog: CanActivateFn = (route, state) => {
+
+  if(inject(BaseDatosService).logeado)
+  {
+    Swal.fire({
+      text: "Ya estas logeado!!",
+      showConfirmButton: false,
+      timer: 1000,
+      toast: true,
+      position: 'top-right',
+      icon:'error',
+    })
+  }
+  return !inject(BaseDatosService).logeado;
 };
