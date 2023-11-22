@@ -23,7 +23,7 @@ export const activateGuard: CanActivateFn = (route, state) => {
 export const activateGuardRol: CanActivateFn = (route, state) => {
   let userRol =  inject(BaseDatosService).userLog.rol
 
-  if(inject(BaseDatosService).logeado)
+  if(userRol !== "admin")
   {
     Swal.fire({
       text: "No tienes los permisos para acceder",
