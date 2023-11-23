@@ -20,6 +20,7 @@ import { TablaContainerComponent } from './componentes/tabla-container/tabla-con
 import { AltaContainerComponent } from './componentes/alta-container/alta-container.component';
 import { ModificarContainerComponent } from './componentes/modificar-container/modificar-container.component';
 import { BorrarContainerComponent } from './componentes/borrar-container/borrar-container.component';
+import { CargarContainerComponent } from './componentes/cargar-container/cargar-container.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { BorrarContainerComponent } from './componentes/borrar-container/borrar-
     TablaContainerComponent,
     AltaContainerComponent,
     ModificarContainerComponent,
-    BorrarContainerComponent
+    BorrarContainerComponent,
+    CargarContainerComponent
   ],
   imports: [
     BrowserModule,

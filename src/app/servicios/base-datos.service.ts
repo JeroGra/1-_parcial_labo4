@@ -3,6 +3,7 @@ import { Firestore, updateDoc, } from '@angular/fire/firestore';
 import { getDocs,setDoc,doc,addDoc,collection,deleteDoc } from 'firebase/firestore';
 import { collectionData } from 'rxfire/firestore';
 import { Contenedor } from '../clases/contenedor';
+import { Producto } from '../clases/producto';
 
 
 
@@ -31,6 +32,9 @@ export class BaseDatosService {
   AltaProducto(producto:any)
   {
     const coleccion = collection(this.firestore,'productos')
+    const documento = doc(coleccion);
+    const id = documento.id;
+    producto.id = id;
     addDoc(coleccion,JSON.parse(JSON.stringify(producto)));
     //this.TraerPeliculas()
   }
@@ -96,6 +100,13 @@ export class BaseDatosService {
 
     })
   }*/
+  ActualizarProducto(id:string,producto:Producto)
+  {
+    const coleccion = collection(this.firestore,'productos')
+    const documento = doc(coleccion,id);
+    let obj = JSON.parse(JSON.stringify(producto));
+    updateDoc(documento,obj);
+  }
 
   ActualizarContainer(id:string,container:Contenedor)
   {

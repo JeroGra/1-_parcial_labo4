@@ -7,6 +7,7 @@ import { activateGuard, activateGuardRol,activateGuardLog } from './guard/activa
 import { ProductoDetalleComponent } from './componentes/producto-detalle/producto-detalle.component';
 import { ProductoListadoPublicoComponent } from './componentes/producto-listado-publico/producto-listado-publico.component';
 import { AbmContainerComponent } from './componentes/abm-container/abm-container.component';
+import { CargarContainerComponent } from './componentes/cargar-container/cargar-container.component';
 
 const routes: Routes = [
 
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path:'altaProducto',component:AltaProductoComponent,canActivate: [activateGuard],},
   {path:'productoDetalle',component:ProductoDetalleComponent,canActivate: [activateGuard],},
   {path:'abmContainer',component:AbmContainerComponent,canActivate: [activateGuardRol],},
+  {path:'cargarContainer',component:CargarContainerComponent,canActivate: [activateGuard],},
   { path: '**', redirectTo: 'home'},
 
 ];

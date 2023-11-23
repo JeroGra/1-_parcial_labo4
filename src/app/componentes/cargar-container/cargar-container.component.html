@@ -1,0 +1,101 @@
+<div  class="card-group">
+    <div *ngIf="selectContainer" class="card">
+        <h5 class="card-title text-center">Seleccione un Container</h5>
+      <div class="card-body" style="overflow: scroll;height: 20rem;">
+            <app-tabla-container   [containers]="arrayconteiners" (containerSeleccionadoevent)="ObtenerConteinersSelecionadoLista($event)" ></app-tabla-container>
+      </div>
+    </div>
+
+
+
+    <div *ngIf="!selectContainer" class="card">
+        <div class="card-body">
+          <h5 class="card-title text-center">Container</h5>
+          <div class="table-responsive">
+            <table class="table text-center">
+              <tbody>
+                <tr>
+                  <th scope="row" class="text-start">Codigo</th>
+                  <td></td>
+                  <td><input disabled="true" name="codigo"  class="form-control" type="text" [(ngModel)]="conteinerSelec.codigo"><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-start">Empresa</th>
+                  <td></td>
+                  <td><input  disabled="true" name="empresa"  class="form-control" type="text" [(ngModel)]="conteinerSelec.empresa"><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-start">Capacidad</th>
+                  <td></td>
+                  <td><input  disabled="true" name="capacidad"  class="form-control" type="text" [(ngModel)]="conteinerSelec.capacidad"><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
+                </tr>
+                <tr>
+                  <th scope="row" class="text-start">Color</th>
+                  <td></td>
+                  <td><input style="height: 40px;"  disabled="true" name="color"  class="form-control" type="color" [(ngModel)]="conteinerSelec.color"><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <button (click)="ListaCont()" style="margin: 1rem;" class="btn btn-primary">
+            Mostrar containers
+        </button>
+
+    </div>
+
+
+
+</div>
+
+<div class="card-group" >
+
+    <div *ngIf="selectProducto" class="card">
+        <h5 class="card-title text-center">Seleccione un Producto</h5>
+      <div class="card-body" style="overflow: scroll;height: 20rem;">
+        <app-tabla-producto  [public]="true" [productos]="arrProductos"  (ProductoSeleccionadoevent)="ObtenerProductoSelecionada($event)"></app-tabla-producto>
+      </div>
+    </div>
+
+    <div *ngIf="!selectProducto && !selectContainer"  class="card">
+        <div class="card-body">
+          <div class="row align-items-md-stretch">
+            <div class="col-md-6">
+              <div  class="h-100 p-5 text-white bg-dark rounded-3">
+                <h5 class="card-title text-center">Detalle del Producto</h5>
+                <div *ngIf="pSelec">
+                    <p>Codigo: {{productoSelec.codigo}}</p>
+                    <p>Descripcion: '{{productoSelec.descripcion}}'</p>
+                    <p>Precio: ${{productoSelec.precio}}</p>
+                    <p>Stock: {{productoSelec.stock}} unidades</p>
+                    <p>Pais Origen: {{paisProd.name.common}}</p>
+                    <p>{{comestible}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="h-100 p-5 bg-light border rounded-3">
+                <h2>Detalle del Pais de origen</h2>
+                <div *ngIf="pSelec">
+                    <p>Pais: {{paisProd.name.common}}</p>
+                    <p>Capital: {{paisProd.capital}}</p>
+                    <p>Continente: {{paisProd.continents}}</p>
+                    <img src="{{paisProd.flags.png}}" alt="bandera">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button (click)="ListaProd()"  style="margin: 1rem;" type="button" class="btn btn-info">Mostrar productos</button>
+        <h4 class="card-title text-center">Seleccione cantidad a cargar</h4>
+
+        <form >
+            <input   name="codigo"  class="form-control" type="number" placeholder="Cantidad"  [(ngModel)]="cantidad" >
+        </form>
+
+        <button (click)="CargarContainer()"  style="margin: 1rem;" type="button" class="btn btn-success">Cargar Producto</button>
+    </div>
+
+</div>
+

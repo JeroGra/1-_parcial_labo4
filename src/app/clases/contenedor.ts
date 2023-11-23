@@ -1,3 +1,5 @@
+import { Producto } from "./producto"
+
 export class Contenedor {
 
     id?:string
@@ -5,4 +7,5 @@ export class Contenedor {
     color?:any
     empresa?:string
     capacidad?:number
+    productos : Array<Producto> = []
 }
