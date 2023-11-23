@@ -8,12 +8,17 @@ import { ProductoDetalleComponent } from './componentes/producto-detalle/product
 import { ProductoListadoPublicoComponent } from './componentes/producto-listado-publico/producto-listado-publico.component';
 import { AbmContainerComponent } from './componentes/abm-container/abm-container.component';
 import { CargarContainerComponent } from './componentes/cargar-container/cargar-container.component';
+import { RegistroComponent } from './componentes/registro/registro.component';
+import { TerminosComponent } from './componentes/terminos/terminos.component';
+import { deActivateGuard } from './guard/de-activate.guard';
 
 const routes: Routes = [
 
   {path:'', redirectTo:'home', pathMatch:"full"},
   {path:'home',component:HomeComponent},
   {path:'login',component:LoginComponent,canActivate: [activateGuardLog]},
+  {path:'registro',component:RegistroComponent,},
+  {path:'terminos',component:TerminosComponent,canDeactivate: [deActivateGuard]},
   {path:'productos',component:ProductoListadoPublicoComponent},
   {path:'altaProducto',component:AltaProductoComponent,canActivate: [activateGuard],},
   {path:'productoDetalle',component:ProductoDetalleComponent,canActivate: [activateGuard],},

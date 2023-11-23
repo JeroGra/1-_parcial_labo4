@@ -21,6 +21,8 @@ import { AltaContainerComponent } from './componentes/alta-container/alta-contai
 import { ModificarContainerComponent } from './componentes/modificar-container/modificar-container.component';
 import { BorrarContainerComponent } from './componentes/borrar-container/borrar-container.component';
 import { CargarContainerComponent } from './componentes/cargar-container/cargar-container.component';
+import { RegistroComponent } from './componentes/registro/registro.component';
+import { TerminosComponent } from './componentes/terminos/terminos.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +38,9 @@ import { CargarContainerComponent } from './componentes/cargar-container/cargar-
     AltaContainerComponent,
     ModificarContainerComponent,
     BorrarContainerComponent,
-    CargarContainerComponent
+    CargarContainerComponent,
+    RegistroComponent,
+    TerminosComponent
   ],
   imports: [
     BrowserModule,

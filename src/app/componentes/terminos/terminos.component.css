@@ -1,0 +1,54 @@
+html,
+#div_principal {
+  height: 200%;
+  /*background-image: url('https://fondosmil.co/fondo/107776.png');*/
+  width: 100%;
+  margin-top: 100px;
+  background-repeat: repeat;
+}
+
+.form-signin {
+  max-width: 430px;
+  max-height: 430px;
+  padding: 1rem;
+  background-color: rgba(255, 228, 196, 0.661);
+}
+
+.form-signin .form-floating:focus-within {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.btn{
+  background-color: rgb(209, 147, 67);
+  border-color: rgb(255, 123, 0);
+}
+.btn:hover{
+  background-color: rgb(235, 140, 15);
+}
+.btn:active{
+  transform: scale(0.7);
+  background-color: rgba(209, 148, 67, 0.757);
+}
+
+.avatar_img{
+  width: 25px;
+  float: left;
+}
+.btn_avatar{
+  margin:1px;
+  margin-top: 2px;
+  height: 40px;
+  width: 130px;
+}

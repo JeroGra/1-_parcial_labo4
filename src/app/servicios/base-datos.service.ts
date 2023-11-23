@@ -12,7 +12,7 @@ import { Producto } from '../clases/producto';
 })
 export class BaseDatosService {
 
-
+  public activado = false;
   public logeado = false;
   public userLog: any | null = null
   usuarios:Array<any> = []
@@ -27,6 +27,17 @@ export class BaseDatosService {
     addDoc(coleccion,pelicula.toFirestore());
     //this.TraerPeliculas()
   }*/
+
+    
+  AltaUsuario(usuario:any)
+  {
+    const coleccion = collection(this.firestore,'usuarios')
+    const documento = doc(coleccion);
+    const id = documento.id;
+    usuario.id = id;
+    addDoc(coleccion,JSON.parse(JSON.stringify(usuario)));
+    //this.TraerPeliculas()
+  }
 
   
   AltaProducto(producto:any)
@@ -79,15 +90,22 @@ export class BaseDatosService {
 
    TraerProductos()
   {
-    this.usuarios = []
+
     const coleccion = collection(this.firestore,'productos')
     return collectionData(coleccion);
   }
 
   TraerContainers()
   {
-    this.usuarios = []
+
     const coleccion = collection(this.firestore,'contenedores')
+    return collectionData(coleccion);
+  }
+
+  TraerUsuarios()
+  {
+
+    const coleccion = collection(this.firestore,'usuarios')
     return collectionData(coleccion);
   }
 

@@ -33,7 +33,7 @@ export class LoginComponent {
       this.forms = this.fb.group({
         email : ['',[
           Validators.required,
-          Validators.maxLength(15),
+          Validators.maxLength(25),
           Validators.email,
         ]],
         pass : ['',[

@@ -1,0 +1,114 @@
+<div id="div_principal">
+    <main class="form-signin w-100 m-auto">
+    <form  [formGroup]="forms">
+    <h1 class="h3 mb-3 fw-normal">Registro</h1>
+    <div class="form-floating">
+        <div *ngIf="forms.controls['nombre'].errors != null" >
+            <small 
+                *ngIf="forms.controls['nombre'].errors!['required'] && forms.controls['nombre'].touched"
+                style="color: red;"
+                >
+                Dato Obligatorio
+             </small>
+          </div>
+      <input  formControlName="nombre" name="nombre" type="text" class="form-control" id="floatingPassword" [(ngModel)]="nombre" placeholder="Nombre">
+      <label for="floatingPassword">Nombre</label>
+      <div  *ngIf="forms.controls['nombre'].errors != null" >
+        <small 
+           *ngIf="!forms.controls['nombre'].errors!['minLength'] && forms.controls['nombre'].touched"
+           style="color: red;"
+           >
+           Coloque minimo 2 caracteres maximo 15
+        </small>
+      </div>  
+    </div>
+
+    <div class="form-floating">
+        <div *ngIf="forms.controls['apellido'].errors != null" >
+            <small 
+                *ngIf="forms.controls['apellido'].errors!['required'] && forms.controls['apellido'].touched"
+                style="color: red;"
+                >
+                Dato Obligatorio
+             </small>
+          </div>
+      <input  formControlName="apellido" name="apellido" type="text" class="form-control" id="floatingPassword" [(ngModel)]="apellido" placeholder="Apellido">
+      <label for="floatingPassword">Apellido</label>
+      <div  *ngIf="forms.controls['apellido'].errors != null" >
+        <small 
+           *ngIf="!forms.controls['apellido'].errors!['minLength'] && forms.controls['apellido'].touched"
+           style="color: red;"
+           >
+           
+           Coloque minimo 2 caracteres maximo 15
+        </small>
+      </div>  
+    </div>
+
+      <input  formControlName="edad" name="edad" type="number" class="form-control" id="floatingPassword" [(ngModel)]="edad" placeholder="Edad">
+
+
+      <input  formControlName="dni" name="dni" type="number" class="form-control" id="floatingPassword" [(ngModel)]="dni" placeholder="DNI">
+
+
+    <div class="form-floating">
+        <h1 style="color: rgb(44, 44, 132);">{{mensaje}}</h1>
+        <div *ngIf="forms.controls['email'].errors != null"  >
+          <small 
+              *ngIf="forms.controls['email'].errors!['required'] && forms.controls['email'].touched"
+              style="color: red;"
+              >
+              Dato Obligatorio
+         </small>
+       </div>
+      <input formControlName="email" name="email" type="email" class="form-control" id="floatingInput" [(ngModel)]="email" placeholder="name@example.com">
+      <label for="floatingInput">Email address</label>
+      <div  *ngIf="forms.controls['email'].errors != null" >
+        <small 
+           *ngIf="!forms.controls['email'].errors!['maxLength'] && forms.controls['email'].touched"
+           style="color: red;"
+           >
+           
+           Coloque maximo 20 caracteres
+        </small>
+      </div>
+      <div  *ngIf="forms.controls['email'].errors != null" >
+        <small 
+           *ngIf="!forms.controls['email'].errors!['email'] && forms.controls['email'].touched"
+           style="color: red;"
+           >
+           
+           Coloque un email valido
+        </small>
+      </div>    
+
+    </div>
+
+    <div class="form-floating">
+        <div *ngIf="forms.controls['pass'].errors != null" >
+            <small 
+                *ngIf="forms.controls['pass'].errors!['required'] && forms.controls['pass'].touched"
+                style="color: red;"
+                >
+                Dato Obligatorio
+             </small>
+          </div>
+      <input  formControlName="pass" name="pass" type="password" class="form-control" id="floatingPassword" [(ngModel)]="pass" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+      <div  *ngIf="forms.controls['pass'].errors != null" >
+        <small 
+           *ngIf="!forms.controls['pass'].errors!['minLength'] && forms.controls['pass'].touched"
+           style="color: red;"
+           >
+           
+           Coloque minimo {{minL}} caracteres
+        </small>
+      </div>  
+    </div>
+  
+    <button class="btn btn-primary w-100 py-2" [disabled]="forms.invalid" (click)="Registrar()" >Regist</button>
+    </form>
+  </main>
+  
+  
+  </div>  

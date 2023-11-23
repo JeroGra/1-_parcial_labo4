@@ -1,0 +1,44 @@
+<div class="card" style="width: 100%;">
+    <div class="card-body">
+      <h5 class="card-title text-center">Acepta terminos y condiciones</h5>
+        <p>Terminos....</p>
+    </div>
+    <div class="card-body">
+        <h6 class="card-title text-center">Coloque su email registrado</h6>
+        <form  [formGroup]="forms">
+        <div class="form-floating">
+            <h1 style="color: rgb(44, 44, 132);">{{mensaje}}</h1>
+            <div *ngIf="forms.controls['email'].errors != null"  >
+              <small 
+                  *ngIf="forms.controls['email'].errors!['required'] && forms.controls['email'].touched"
+                  style="color: red;"
+                  >
+                  Dato Obligatorio
+             </small>
+           </div>
+          <input formControlName="email" name="email" type="email" class="form-control" id="floatingInput" [(ngModel)]="email" placeholder="name@example.com">
+          <label for="floatingInput">Email address</label>
+          <div  *ngIf="forms.controls['email'].errors != null" >
+            <small 
+               *ngIf="!forms.controls['email'].errors!['maxLength'] && forms.controls['email'].touched"
+               style="color: red;"
+               >
+               
+               Coloque maximo 20 caracteres
+            </small>
+          </div>
+          <div  *ngIf="forms.controls['email'].errors != null" >
+            <small 
+               *ngIf="!forms.controls['email'].errors!['email'] && forms.controls['email'].touched"
+               style="color: red;"
+               >
+               
+               Coloque un email valido
+            </small>
+          </div>    
+    
+        </div>
+        </form>
+    </div>
+    <button (click)="Aceptar()" [disabled]="forms.invalid" class="btn btn-primary">Aceptar</button>
+  </div>
